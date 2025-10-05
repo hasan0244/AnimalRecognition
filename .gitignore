@@ -1,0 +1,23 @@
+# VS/.NET
+**/bin/**
+**/obj/**
+.vs/
+*.user
+*.suo
+*.log
+*.cache
+TestResults/
+packages/
+
+# Runtime binaries (не в Git)
+**/runtimes/**
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.key
+*.pfx
+*.pem
+appsettings.Development.json

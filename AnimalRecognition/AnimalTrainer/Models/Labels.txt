@@ -1,0 +1,10 @@
+bear
+bird
+cat
+deer
+dog
+fish
+hedgehog
+horse
+rabbit
+turtle

@@ -1,0 +1,2 @@
+model_checkpoint_path: "custom_retrained_model_based_on_resnet_v2_50_299.meta"
+all_model_checkpoint_paths: "C:\AnimalRecognition\AnimalRecognition\AnimalTrainer\Models\tf_workspace\custom_retrained_model_based_on_resnet_v2_50_299.meta"
