@@ -20,7 +20,7 @@ namespace AnimalTrainer
 
         static void Main(string[] args)
         {
-            // Скриваме INFO/WARN/ERROR от TensorFlow възможно най-рано
+            
             Environment.SetEnvironmentVariable("TF_CPP_MIN_LOG_LEVEL", "3", EnvironmentVariableTarget.Process);
 
             Directory.CreateDirectory(ModelsDir);
@@ -82,15 +82,15 @@ namespace AnimalTrainer
                         ValidationSet = valPrepared,
                         Arch = ImageClassificationTrainer.Architecture.ResnetV250,
                         WorkspacePath = Workspace,
-                        Epoch = 6,     // беше 3
-                        BatchSize = 8,    // ако RAM позволява; при OOM върни на 8
+                        Epoch = 6,     
+                        BatchSize = 8,    
                         LearningRate = 0.005f
                     })
                 .Append(ml.Transforms.Conversion.MapKeyToValue(
                         outputColumnName: "PredictedLabel",
                         inputColumnName: "PredictedLabel"));
 
-            // 5) Обучение – заглушаваме STDERR (TF пише там)
+            // 5) Обучение – заглушаваме STDERR
             Console.WriteLine("\nTraining...");
             var originalErr = Console.Error;
             ITransformer model;

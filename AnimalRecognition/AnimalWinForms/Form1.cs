@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using AnimalWinForms.Services; // AnimalClassifier
+using AnimalWinForms.Services; 
 
 namespace AnimalWinForms
 {
@@ -50,7 +50,7 @@ namespace AnimalWinForms
             root.RowStyles.Add(new RowStyle(SizeType.AutoSize));     // резултати
             Controls.Add(root);
 
-            // ----- Снимка (без черни ленти)
+            // Снимка (без черни ленти)
             _picture = new PictureBox
             {
                 Dock = DockStyle.Fill,
@@ -59,7 +59,7 @@ namespace AnimalWinForms
             };
             root.Controls.Add(_picture, 0, 0);
 
-            // ----- Бар с по-големи бутони + Авто
+            //Бар с по-големи бутони + Авто
             var bar = new FlowLayoutPanel
             {
                 Dock = DockStyle.Top,
@@ -70,7 +70,7 @@ namespace AnimalWinForms
             };
 
             var btnFont = new Font("Segoe UI", 10f, FontStyle.Regular);
-            var btnSize = new Size(180, 40); // по-големи бутони
+            var btnSize = new Size(180, 40); 
 
             _btnOpen = new Button { Text = "Отвори изображение", Font = btnFont, Size = btnSize };
             _btnOpen.Click += async (_, __) => await OpenImageAsync();
@@ -93,7 +93,7 @@ namespace AnimalWinForms
 
             root.Controls.Add(bar, 0, 1);
 
-            // ----- Резултати (Top-1 + Top-3 долу + инфо)
+            // Резултати (Top-1 + Top-3 долу + инфо)
             var results = new TableLayoutPanel
             {
                 Dock = DockStyle.Top,
@@ -115,7 +115,7 @@ namespace AnimalWinForms
             {
                 AutoSize = true,
                 Margin = new Padding(0, 2, 0, 4),
-                Text = "" // тук показваме Top-3
+                Text = "" 
             };
             results.Controls.Add(_lblTop3, 0, 1);
 
@@ -312,7 +312,7 @@ namespace AnimalWinForms
                         var dstPath = Path.Combine(labelDir, Path.GetFileName(file));
                         dstPath = EnsureUniquePath(dstPath);
 
-                        File.Copy(file, dstPath, overwrite: false); // смени на Move, ако искаш преместване
+                        File.Copy(file, dstPath, overwrite: false); 
 
                         if (!perLabel.TryGetValue(label, out var cnt)) cnt = 0;
                         perLabel[label] = cnt + 1;

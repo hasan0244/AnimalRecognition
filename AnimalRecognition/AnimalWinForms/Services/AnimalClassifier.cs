@@ -1,5 +1,4 @@
-﻿// AnimalWinForms/Services/AnimalClassifier.cs
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
@@ -43,13 +42,13 @@ namespace AnimalWinForms.Services
             using (var fs = File.OpenRead(modelPath))
                 _model = _ml.Model.Load(fs, out _);
 
-            // ВАЖНО: вместо да четем схема, създаваме нужните входни колони
+            // вместо да четем схема, създаваме нужните входни колони
             // 1) ImagePath (string) -> Image (byte[])
             // 2) Дублираме като Feature и Features, за да покрием различни модели
             var pre = _ml.Transforms.LoadRawImageBytes(
                             outputColumnName: "Image",
                             inputColumnName: nameof(ModelInput.ImagePath),
-                            imageFolder: "" // подаваме абсолютен път; root не е нужен
+                            imageFolder: "" // подаваме абсолютен път;
                         )
                         .Append(_ml.Transforms.CopyColumns("Feature", "Image"))
                         .Append(_ml.Transforms.CopyColumns("Features", "Image"))
@@ -66,9 +65,7 @@ namespace AnimalWinForms.Services
 
         public IReadOnlyList<string> Labels => _labels;
 
-        /// <summary>
         /// Връща Top-K (етикет, вероятност), сортирани по вероятност.
-        /// </summary>
         public IEnumerable<(string label, float prob)> PredictTop(string imagePath, int k = 3)
         {
             if (_engine is null || _model is null)

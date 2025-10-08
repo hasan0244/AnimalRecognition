@@ -4,7 +4,7 @@ namespace AnimalWinForms.Models
 {
     public sealed class ModelInput
     {
-        // Даваме абсолютен път към файла; пре-трансформът ще го прочете като bytes
+        // Даваме абсолютен път към файла
         [LoadColumn(0)]
         public string ImagePath { get; set; } = "";
     }
